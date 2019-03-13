@@ -21,4 +21,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAllBooksByAuthorName(String authorName) {
         return bookRepository.getAllBooksByAuthorName(authorName);
     }
+
+    @Override
+    public List<Book> getAllBooksByTitle(String title) {
+        return bookRepository.getAllBooksByTitle(title);
+    }
 }

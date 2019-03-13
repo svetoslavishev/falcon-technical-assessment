@@ -38,4 +38,24 @@ public class SqlBookRepository implements BookRepository {
 
         return result;
     }
+
+    @Override
+    public List<Book> getAllBooksByTitle(String title) {
+        List<Book> result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = session.createQuery("from Book where upper(title) like :title")
+                    .setParameter("title", title.toUpperCase() + "%")
+                    .list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
 }

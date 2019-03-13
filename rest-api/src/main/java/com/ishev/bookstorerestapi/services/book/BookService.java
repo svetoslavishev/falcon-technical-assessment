@@ -8,4 +8,5 @@ public interface BookService {
 
     List<Book> getAllBooksByAuthorName(String authorName);
 
+    List<Book> getAllBooksByTitle(String title);
 }

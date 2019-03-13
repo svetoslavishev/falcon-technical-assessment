@@ -8,4 +8,5 @@ public interface BookRepository {
 
     List<Book> getAllBooksByAuthorName(String authorName);
 
+    List<Book> getAllBooksByTitle(String title);
 }
