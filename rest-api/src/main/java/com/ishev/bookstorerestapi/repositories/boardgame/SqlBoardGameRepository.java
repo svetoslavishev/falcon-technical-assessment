@@ -1,6 +1,7 @@
 package com.ishev.bookstorerestapi.repositories.boardgame;
 
 import com.ishev.bookstorerestapi.models.BoardGame;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,11 +20,39 @@ public class SqlBoardGameRepository implements BoardGameRepository {
 
     @Override
     public List<BoardGame> getAllBoardGamesByNumberOfPlayers(int numberOfPlayers) {
-        return null;
+        List<BoardGame> result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = session.createQuery("from BoardGame where minPlayers <= :numberOfPlayers and maxPlayers >= :numberOfPlayers")
+                    .setParameter("numberOfPlayers", numberOfPlayers)
+                    .list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
     }
 
     @Override
     public List<BoardGame> getAllBoardGamesByName(String name) {
-        return null;
+        List<BoardGame> result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = session.createQuery("from BoardGame where upper(name) like :name")
+                    .setParameter("name", name.toUpperCase() + "%")
+                    .list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
     }
 }

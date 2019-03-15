@@ -19,11 +19,11 @@ public class BoardGameServiceImpl implements BoardGameService {
 
     @Override
     public List<BoardGame> getAllBoardGamesByNumberOfPlayers(int numberOfPlayers) {
-        return null;
+        return boardGameRepository.getAllBoardGamesByNumberOfPlayers(numberOfPlayers);
     }
 
     @Override
     public List<BoardGame> getAllBoardGamesByName(String name) {
-        return null;
+        return boardGameRepository.getAllBoardGamesByName(name);
     }
 }
