@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/items")
 public class ItemRestController {
-    private ItemService itemService;
+    private final ItemService itemService;
 
     @Autowired
     public ItemRestController(ItemService itemService) {

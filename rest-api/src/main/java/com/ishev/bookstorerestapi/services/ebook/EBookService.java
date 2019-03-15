@@ -8,4 +8,5 @@ public interface EBookService {
 
     List<EBook> getAllEBooksByAuthorName(String authorName);
 
+    List<EBook> getAllEBooksByTytle(String title);
 }

@@ -14,16 +14,16 @@ public class EBook {
     @Column(name = "id_item")
     private int itemId;
 
-    @Column(name = "book_title")
+    @Column(name = "ebook_title")
     private String title;
 
-    @Column(name = "book_author_name")
+    @Column(name = "ebook_author_name")
     private String authorName;
 
-    @Column(name = "book_price")
+    @Column(name = "ebook_price")
     private double price;
 
-    @Column(name = "book_stock")
+    @Column(name = "ebook_stock")
     private int inStockQuantity;
 
     public EBook() {

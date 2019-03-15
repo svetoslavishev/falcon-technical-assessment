@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/boardgames")
 public class BoardGameRestController {
 
-    private BoardGameService boardGameService;
+    private final BoardGameService boardGameService;
 
     @Autowired
     public BoardGameRestController(BoardGameService boardGameService) {
