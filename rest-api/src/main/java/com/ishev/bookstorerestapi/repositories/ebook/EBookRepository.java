@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface EBookRepository {
 
+    List<EBook> getAllEBooks();
     List<EBook> getAllEBooksByAuthorName(String authorName);
     List<EBook> getAllEBooksByTitle(String title);
     EBook getEBookById(int id);

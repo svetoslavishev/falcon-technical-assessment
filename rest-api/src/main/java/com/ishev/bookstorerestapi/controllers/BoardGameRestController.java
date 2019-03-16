@@ -21,6 +21,11 @@ public class BoardGameRestController {
         this.boardGameService = boardGameService;
     }
 
+    @GetMapping
+    public List<BoardGame> getBoardGamesCatalog() {
+        return boardGameService.getAllBoardGames();
+    }
+
     @GetMapping("/name/{name}")
     public List<BoardGame> searchForBoardGamesByName(@PathVariable String name) {
         return boardGameService.getAllBoardGamesByName(name);

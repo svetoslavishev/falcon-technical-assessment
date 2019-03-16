@@ -21,6 +21,11 @@ public class BookRestController {
         this.bookService = bookService;
     }
 
+    @GetMapping
+    public List<Book> getBooksCatalog() {
+        return bookService.getAllBooks();
+    }
+
     @GetMapping("/author/{authorName}")
     public List<Book> searchBooksByAuthorName(@PathVariable String authorName) {
         return bookService.getAllBooksByAuthorName(authorName);

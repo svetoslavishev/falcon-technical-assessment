@@ -18,6 +18,11 @@ public class EBookServiceImpl implements EBookService {
     }
 
     @Override
+    public List<EBook> getAllEBooks() {
+        return eBookRepository.getAllEBooks();
+    }
+
+    @Override
     public List<EBook> getAllEBooksByAuthorName(String authorName) {
         return eBookRepository.getAllEBooksByAuthorName(authorName);
     }

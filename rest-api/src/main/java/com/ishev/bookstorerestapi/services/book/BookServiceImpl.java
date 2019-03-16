@@ -18,6 +18,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.getAllBooks();
+    }
+
+    @Override
     public List<Book> getAllBooksByAuthorName(String authorName) {
         return bookRepository.getAllBooksByAuthorName(authorName);
     }

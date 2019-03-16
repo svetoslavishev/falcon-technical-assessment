@@ -1,9 +1,6 @@
 package com.ishev.bookstorerestapi;
 
-import com.ishev.bookstorerestapi.models.BoardGame;
-import com.ishev.bookstorerestapi.models.Book;
-import com.ishev.bookstorerestapi.models.EBook;
-import com.ishev.bookstorerestapi.models.Item;
+import com.ishev.bookstorerestapi.models.*;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +21,9 @@ public class BookstorerestapiApplication {
                 .addAnnotatedClass(Book.class)
                 .addAnnotatedClass(EBook.class)
                 .addAnnotatedClass(Item.class)
+                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(OrderDetails.class)
                 .buildSessionFactory();
     }
 

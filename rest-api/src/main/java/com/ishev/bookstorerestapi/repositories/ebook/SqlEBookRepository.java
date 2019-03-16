@@ -19,6 +19,24 @@ public class SqlEBookRepository implements EBookRepository {
     }
 
     @Override
+    public List<EBook> getAllEBooks() {
+        List<EBook> result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = session.createQuery("from EBook").list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
+
+    @Override
     public List<EBook> getAllEBooksByAuthorName(String authorName) {
         List<EBook> result;
 

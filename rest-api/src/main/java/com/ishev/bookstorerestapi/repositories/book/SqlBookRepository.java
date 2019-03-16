@@ -19,6 +19,24 @@ public class SqlBookRepository implements BookRepository {
     }
 
     @Override
+    public List<Book> getAllBooks() {
+        List<Book> result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = session.createQuery("from Book").list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
+
+    @Override
     public List<Book> getAllBooksByAuthorName(String authorName) {
 
         List<Book> result;
