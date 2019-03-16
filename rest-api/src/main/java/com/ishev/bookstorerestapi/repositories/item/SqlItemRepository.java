@@ -36,9 +36,4 @@ public class SqlItemRepository implements ItemRepository {
 
         return result;
     }
-
-    @Override
-    public Item reduceItemInStockQuantity() {
-        return null;
-    }
 }

@@ -8,6 +8,4 @@ public interface ItemService {
 
     List<Item> getAllItems();
 
-    Item reduceItemInStockQuantity();
-
 }

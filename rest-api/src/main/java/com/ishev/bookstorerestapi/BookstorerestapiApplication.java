@@ -22,8 +22,7 @@ public class BookstorerestapiApplication {
                 .addAnnotatedClass(EBook.class)
                 .addAnnotatedClass(Item.class)
                 .addAnnotatedClass(Customer.class)
-                .addAnnotatedClass(Order.class)
-                .addAnnotatedClass(OrderDetails.class)
+                .addAnnotatedClass(Request.class)
                 .buildSessionFactory();
     }
 

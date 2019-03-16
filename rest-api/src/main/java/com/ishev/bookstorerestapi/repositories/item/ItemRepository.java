@@ -8,5 +8,4 @@ public interface ItemRepository {
 
     List<Item> getAllItems();
 
-    Item reduceItemInStockQuantity();
 }

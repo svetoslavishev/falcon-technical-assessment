@@ -4,16 +4,16 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "order_details")
-public class OrderDetails {
+@Table(name = "request")
+public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_order_details")
-    private int orderDetailsId;
+    @Column(name = "id_request")
+    private int requestId;
 
-    @Column(name = "id_order")
-    private int orderId;
+    @Column(name = "id_customer")
+    private int customerId;
 
     @Column(name = "id_item")
     private int itemId;
@@ -25,32 +25,32 @@ public class OrderDetails {
     @Column(name = "date")
     private Date date;
 
-    public OrderDetails() {
+    public Request() {
 
     }
 
-    public OrderDetails(int orderDetailsId, int orderId, int itemId, int quantity, Date date) {
-        setOrderDetailsId(orderDetailsId);
-        setOrderId(orderId);
+    public Request(int requestId, int customerId, int itemId, int quantity, Date date) {
+        setRequestId(requestId);
+        setCustomerId(customerId);
         setItemId(itemId);
         setQuantity(quantity);
         setDate(date);
     }
 
-    public int getOrderDetailsId() {
-        return orderDetailsId;
+    public int getRequestId() {
+        return requestId;
     }
 
-    public void setOrderDetailsId(int orderDetailsId) {
-        this.orderDetailsId = orderDetailsId;
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public int getItemId() {
@@ -76,4 +76,5 @@ public class OrderDetails {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

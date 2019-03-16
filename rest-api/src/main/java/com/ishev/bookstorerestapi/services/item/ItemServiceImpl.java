@@ -22,8 +22,4 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.getAllItems();
     }
 
-    @Override
-    public Item reduceItemInStockQuantity() {
-        return itemRepository.reduceItemInStockQuantity();
-    }
 }
