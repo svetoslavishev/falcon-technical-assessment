@@ -8,5 +8,6 @@ public interface EBookRepository {
 
     List<EBook> getAllEBooksByAuthorName(String authorName);
     List<EBook> getAllEBooksByTitle(String title);
+    EBook getEBookById(int id);
 
 }

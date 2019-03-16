@@ -55,4 +55,23 @@ public class SqlBoardGameRepository implements BoardGameRepository {
 
         return result;
     }
+
+    @Override
+    public BoardGame getBoardGameById(int id) {
+        BoardGame result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = (BoardGame) session.createQuery("from BoardGame where itemId = :id")
+                    .setParameter("id", id)
+                    .uniqueResult();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
 }

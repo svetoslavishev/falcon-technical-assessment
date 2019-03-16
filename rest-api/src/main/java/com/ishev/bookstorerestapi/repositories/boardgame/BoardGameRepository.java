@@ -7,4 +7,5 @@ import java.util.List;
 public interface BoardGameRepository {
     List<BoardGame> getAllBoardGamesByNumberOfPlayers(int numberOfPlayers);
     List<BoardGame> getAllBoardGamesByName(String name);
+    BoardGame getBoardGameById(int id);
 }

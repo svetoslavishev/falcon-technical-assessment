@@ -30,4 +30,9 @@ public class BookRestController {
     public List<Book> searchBooksByTitle(@PathVariable String title) {
         return bookService.getAllBooksByTitle(title);
     }
+
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable int id) {
+        return bookService.getBookById(id);
+    }
 }

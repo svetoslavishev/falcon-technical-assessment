@@ -26,4 +26,9 @@ public class EBookServiceImpl implements EBookService {
     public List<EBook> getAllEBooksByTytle(String title) {
         return eBookRepository.getAllEBooksByTitle(title);
     }
+
+    @Override
+    public EBook getEBookById(int id) {
+        return eBookRepository.getEBookById(id);
+    }
 }

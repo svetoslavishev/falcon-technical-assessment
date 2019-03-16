@@ -30,4 +30,9 @@ public class BoardGameRestController {
     public List<BoardGame> searchForBoardGamesByNumberOfPlayers(@PathVariable int numberOfPlayers) {
         return boardGameService.getAllBoardGamesByNumberOfPlayers(numberOfPlayers);
     }
+
+    @GetMapping("/{id}")
+    public BoardGame getBoardGameById(@PathVariable int id) {
+        return boardGameService.getBoardGameById(id);
+    }
 }

@@ -26,4 +26,9 @@ public class BoardGameServiceImpl implements BoardGameService {
     public List<BoardGame> getAllBoardGamesByName(String name) {
         return boardGameRepository.getAllBoardGamesByName(name);
     }
+
+    @Override
+    public BoardGame getBoardGameById(int id) {
+        return boardGameRepository.getBoardGameById(id);
+    }
 }

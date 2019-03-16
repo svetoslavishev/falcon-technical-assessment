@@ -57,4 +57,24 @@ public class SqlEBookRepository implements EBookRepository {
 
         return result;
     }
+
+    @Override
+    public EBook getEBookById(int id) {
+        EBook result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = (EBook) session.createQuery("from EBook where itemId = :id")
+                    .setParameter("id", id)
+                    .uniqueResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
 }

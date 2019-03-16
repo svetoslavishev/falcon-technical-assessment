@@ -30,4 +30,9 @@ public class EBookRestController {
     public List<EBook> searchEBooksByTitle(@PathVariable String title) {
         return eBookService.getAllEBooksByTytle(title);
     }
+
+    @GetMapping("/{id}")
+    public EBook getBookById(@PathVariable int id) {
+        return eBookService.getEBookById(id);
+    }
 }

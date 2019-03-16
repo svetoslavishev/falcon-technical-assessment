@@ -58,4 +58,25 @@ public class SqlBookRepository implements BookRepository {
 
         return result;
     }
+
+    @Override
+    public Book getBookById(int id) {
+
+        Book result;
+
+        try(
+                Session session = sessionFactory.openSession()
+        ) {
+            session.beginTransaction();
+            result = (Book) session.createQuery("from Book where itemId = :id")
+                    .setParameter("id", id)
+                    .uniqueResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+        return result;
+    }
 }
