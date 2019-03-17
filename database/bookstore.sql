@@ -30,7 +30,7 @@ CREATE TABLE `customer` (
   `last_name` varchar(100) NOT NULL,
   `phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'Georgi','Todorov','0886111213'),(2,'Ivan','Atanasov','0886111314'),(3,'Martin','Petkov','0886111415'),(4,'Hristo','Georgiev','0886102030');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,57 +160,34 @@ INSERT INTO `item_ebook` VALUES (1,49,'The Adventures of Tom Sawyer','Mark Twain
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `request`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
-  `id_order` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `request` (
+  `id_request` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
-  PRIMARY KEY (`id_order`,`id_customer`),
-  KEY `id_order_fk_idx` (`id_customer`),
-  CONSTRAINT `id_order_fk` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `order_details`
---
-
-DROP TABLE IF EXISTS `order_details`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order_details` (
-  `id_order_details` int(11) NOT NULL,
-  `id_order` int(11) NOT NULL,
   `id_item` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL,
-  PRIMARY KEY (`id_order_details`),
-  KEY `id_order_detail_fk_idx` (`id_order`),
-  KEY `id_order_detail_fk_2_idx` (`id_item`),
-  CONSTRAINT `id_order_detail_fk` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`),
-  CONSTRAINT `id_order_detail_fk_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `quantity` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id_request`),
+  KEY `id_customer_idx` (`id_customer`),
+  KEY `id_item_idx` (`id_item`),
+  CONSTRAINT `id_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `id_item` FOREIGN KEY (`id_item`) REFERENCES `item` (`id_item`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order_details`
+-- Dumping data for table `request`
 --
 
-LOCK TABLES `order_details` WRITE;
-/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+LOCK TABLES `request` WRITE;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (3,1,19,3,'2019-03-17 12:24:55');
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -221,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-16 13:48:02
+-- Dump completed on 2019-03-17 15:55:07
