@@ -86,4 +86,5 @@ public class Book {
     public void setInStockQuantity(int inStockQuantity) {
         this.inStockQuantity = inStockQuantity;
     }
+
 }
