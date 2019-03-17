@@ -33,7 +33,7 @@ public class BoardGameServiceImpl implements BoardGameService {
     }
 
     @Override
-    public BoardGame getBoardGameById(int id) {
-        return boardGameRepository.getBoardGameById(id);
+    public void updateBoardGameQuantity(int boardGameId, int quantity) {
+        boardGameRepository.updateBoardGameQuantity(boardGameId, quantity);
     }
 }

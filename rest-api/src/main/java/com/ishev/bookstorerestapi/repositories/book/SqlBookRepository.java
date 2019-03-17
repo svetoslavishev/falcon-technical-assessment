@@ -78,23 +78,21 @@ public class SqlBookRepository implements BookRepository {
     }
 
     @Override
-    public Book getBookById(int id) {
-
-        Book result;
+    public void updateBookQuantity(int bookId, int quantity) {
 
         try(
                 Session session = sessionFactory.openSession()
         ) {
             session.beginTransaction();
-            result = (Book) session.createQuery("from Book where itemId = :id")
-                    .setParameter("id", id)
-                    .uniqueResult();
+            Book book = session.get(Book.class, bookId);
+            int currentQuantity = book.getInStockQuantity();
+            if (currentQuantity + quantity >= 0) {
+                book.setInStockQuantity(currentQuantity + quantity);
+            }
             session.getTransaction().commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();
         }
-
-        return result;
     }
 }

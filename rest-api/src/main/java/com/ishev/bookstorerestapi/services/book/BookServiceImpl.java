@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(int id) {
-        return bookRepository.getBookById(id);
+    public void updateBookQuantity(int bookId, int quantity) {
+        bookRepository.updateBookQuantity(bookId, quantity);
     }
 }

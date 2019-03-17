@@ -9,6 +9,6 @@ public interface EBookRepository {
     List<EBook> getAllEBooks();
     List<EBook> getAllEBooksByAuthorName(String authorName);
     List<EBook> getAllEBooksByTitle(String title);
-    EBook getEBookById(int id);
+    void updateEBookQuantity(int eBookId, int quantity);
 
 }

@@ -3,10 +3,7 @@ package com.ishev.bookstorerestapi.controllers;
 import com.ishev.bookstorerestapi.models.EBook;
 import com.ishev.bookstorerestapi.services.ebook.EBookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,8 +33,9 @@ public class EBookRestController {
         return eBookService.getAllEBooksByTytle(title);
     }
 
-    @GetMapping("/{id}")
-    public EBook getBookById(@PathVariable int id) {
-        return eBookService.getEBookById(id);
+    @PutMapping("/{eBookId}/{quantity}")
+    public void updateBookQuantity(@PathVariable int eBookId, @PathVariable int quantity) {
+        eBookService.updateEBookQuantity(eBookId, quantity);
     }
+
 }

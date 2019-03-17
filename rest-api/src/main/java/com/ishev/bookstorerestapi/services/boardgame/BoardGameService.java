@@ -8,5 +8,5 @@ public interface BoardGameService {
     List<BoardGame> getAllBoardGames();
     List<BoardGame> getAllBoardGamesByNumberOfPlayers(int numberOfPlayers);
     List<BoardGame> getAllBoardGamesByName(String name);
-    BoardGame getBoardGameById(int id);
+    void updateBoardGameQuantity(int boardGameId, int quantity);
 }

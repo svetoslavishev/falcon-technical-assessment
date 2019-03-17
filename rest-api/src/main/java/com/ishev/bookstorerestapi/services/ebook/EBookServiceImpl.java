@@ -33,7 +33,7 @@ public class EBookServiceImpl implements EBookService {
     }
 
     @Override
-    public EBook getEBookById(int id) {
-        return eBookRepository.getEBookById(id);
+    public void updateEBookQuantity(int eBookId, int quantity) {
+        eBookRepository.updateEBookQuantity(eBookId, quantity);
     }
 }

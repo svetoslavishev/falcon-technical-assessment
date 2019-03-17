@@ -74,21 +74,22 @@ public class SqlBoardGameRepository implements BoardGameRepository {
     }
 
     @Override
-    public BoardGame getBoardGameById(int id) {
-        BoardGame result;
+    public void updateBoardGameQuantity(int boardGameId, int quantity) {
 
         try(
                 Session session = sessionFactory.openSession()
         ) {
             session.beginTransaction();
-            result = (BoardGame) session.createQuery("from BoardGame where itemId = :id")
-                    .setParameter("id", id)
-                    .uniqueResult();
+            BoardGame boardGameToBeUpdated = session.get(BoardGame.class, boardGameId);
+            int currentQuantity = boardGameToBeUpdated.getInStockQuantity();
+            if (currentQuantity + quantity >= 0) {
+                boardGameToBeUpdated.setInStockQuantity(currentQuantity + quantity);
+            }
+            session.update(boardGameToBeUpdated);
+            session.getTransaction().commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();
         }
-
-        return result;
     }
 }

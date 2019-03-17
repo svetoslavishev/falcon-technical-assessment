@@ -9,6 +9,6 @@ public interface EBookService {
     List<EBook> getAllEBooks();
     List<EBook> getAllEBooksByAuthorName(String authorName);
     List<EBook> getAllEBooksByTytle(String title);
-    EBook getEBookById(int id);
+    void updateEBookQuantity(int eBookId, int quantity);
 
 }
